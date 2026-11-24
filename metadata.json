@@ -1,0 +1,6 @@
+{
+  "name": "Nocturne — Gothic Music Lounge",
+  "description": "An atmospheric gothic personal music player with local IndexedDB storage, Web Audio 10-band equalizer, cathedral reverb, real-time visualizers, lyrics editor, playlists, and mini-player.",
+  "requestFramePermissions": [],
+  "majorCapabilities": []
+}

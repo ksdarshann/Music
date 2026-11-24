@@ -1,0 +1,210 @@
+@import "tailwindcss";
+
+@layer base {
+  :root {
+    --font-display: 'Cinzel', Georgia, serif;
+    --font-sans: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+    --font-mono: 'JetBrains Mono', ui-monospace, SFMono-Regular, monospace;
+  }
+
+  body {
+    font-family: var(--font-sans);
+    background-color: #060406;
+    color: #f5efef;
+    overflow-x: hidden;
+  }
+}
+
+.font-display {
+  font-family: var(--font-display);
+}
+
+.font-mono-tabular {
+  font-family: var(--font-mono);
+  font-variant-numeric: tabular-nums;
+}
+
+.tabular-nums {
+  font-variant-numeric: tabular-nums;
+}
+
+/* Custom Gothic Scrollbars */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: rgba(12, 8, 11, 0.4);
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(153, 27, 27, 0.4);
+  border-radius: 9999px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(220, 38, 38, 0.7);
+}
+
+/* Atmospheric Mist & Bat Animations (Compositor-only transforms & opacity) */
+@keyframes mistDriftSlow {
+  0% {
+    transform: translate3d(-4%, -2%, 0) scale(1) rotate(0deg);
+  }
+  50% {
+    transform: translate3d(4%, 3%, 0) scale(1.08) rotate(3deg);
+  }
+  100% {
+    transform: translate3d(-4%, -2%, 0) scale(1) rotate(0deg);
+  }
+}
+
+@keyframes mistDriftCounter {
+  0% {
+    transform: translate3d(3%, 2%, 0) scale(1.05) rotate(0deg);
+  }
+  50% {
+    transform: translate3d(-4%, -3%, 0) scale(0.98) rotate(-3deg);
+  }
+  100% {
+    transform: translate3d(3%, 2%, 0) scale(1.05) rotate(0deg);
+  }
+}
+
+@keyframes batGlideOne {
+  0% {
+    transform: translate3d(-10vw, 12vh, 0) scale(0.85);
+    opacity: 0;
+  }
+  10% {
+    opacity: 0.24;
+  }
+  50% {
+    transform: translate3d(45vw, 5vh, 0) scale(0.95);
+    opacity: 0.28;
+  }
+  90% {
+    opacity: 0.2;
+  }
+  100% {
+    transform: translate3d(105vw, 16vh, 0) scale(0.8);
+    opacity: 0;
+  }
+}
+
+@keyframes batGlideTwo {
+  0% {
+    transform: translate3d(108vw, 28vh, 0) scale(0.65) scaleX(-1);
+    opacity: 0;
+  }
+  12% {
+    opacity: 0.18;
+  }
+  55% {
+    transform: translate3d(48vw, 18vh, 0) scale(0.75) scaleX(-1);
+    opacity: 0.22;
+  }
+  90% {
+    opacity: 0.14;
+  }
+  100% {
+    transform: translate3d(-12vw, 26vh, 0) scale(0.65) scaleX(-1);
+    opacity: 0;
+  }
+}
+
+@keyframes eqBarBounce {
+  0%, 100% {
+    transform: scaleY(0.28);
+  }
+  50% {
+    transform: scaleY(1);
+  }
+}
+
+.animate-mist-slow {
+  animation: mistDriftSlow 28s ease-in-out infinite;
+  will-change: transform;
+}
+
+.animate-mist-counter {
+  animation: mistDriftCounter 34s ease-in-out infinite;
+  will-change: transform;
+}
+
+.animate-bat-one {
+  animation: batGlideOne 42s linear infinite;
+  will-change: transform, opacity;
+}
+
+.animate-bat-two {
+  animation: batGlideTwo 54s linear infinite;
+  animation-delay: -18s;
+  will-change: transform, opacity;
+}
+
+.animate-eq-1 {
+  animation: eqBarBounce 0.72s ease-in-out infinite;
+  transform-origin: bottom;
+}
+.animate-eq-2 {
+  animation: eqBarBounce 0.56s ease-in-out infinite 0.15s;
+  transform-origin: bottom;
+}
+.animate-eq-3 {
+  animation: eqBarBounce 0.84s ease-in-out infinite 0.3s;
+  transform-origin: bottom;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-mist-slow,
+  .animate-mist-counter,
+  .animate-bat-one,
+  .animate-bat-two,
+  .animate-eq-1,
+  .animate-eq-2,
+  .animate-eq-3 {
+    animation: none !important;
+  }
+}
+
+/* Custom Range Inputs */
+input[type='range'].gothic-slider {
+  -webkit-appearance: none;
+  appearance: none;
+  background: transparent;
+  cursor: pointer;
+}
+
+input[type='range'].gothic-slider::-webkit-slider-runnable-track {
+  height: 4px;
+  border-radius: 9999px;
+}
+
+input[type='range'].gothic-slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  height: 12px;
+  width: 12px;
+  border-radius: 9999px;
+  background: #f5efef;
+  border: 2px solid #dc2626;
+  margin-top: -4px;
+  box-shadow: 0 0 10px rgba(220, 38, 38, 0.65);
+  transition: transform 0.15s ease, background-color 0.15s ease;
+}
+
+input[type='range'].gothic-slider:hover::-webkit-slider-thumb {
+  transform: scale(1.2);
+  background: #ffffff;
+}
+
+input[type='range'].gothic-slider::-moz-range-thumb {
+  height: 12px;
+  width: 12px;
+  border-radius: 9999px;
+  background: #f5efef;
+  border: 2px solid #dc2626;
+  box-shadow: 0 0 10px rgba(220, 38, 38, 0.65);
+}
